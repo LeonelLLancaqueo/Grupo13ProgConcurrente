@@ -1,6 +1,6 @@
 public class SumaMatriz {
     private int sum;
-    public int sumMatriz(int[] nums){
+    public synchronized int sumMatriz(int[] nums){
         sum=0;
         for (int i=0; i<nums.length;i++){
             sum+= nums[i];
