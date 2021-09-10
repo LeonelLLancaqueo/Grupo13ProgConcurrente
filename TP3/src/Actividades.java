@@ -1,55 +1,31 @@
 
 class Actividades   {
-    private boolean comerEnUso=false;
-    private boolean corriendoEnUso=false;
-    private boolean descansandoEnUso= false;
+    private Object comer = new Object();
+    private Object corriendo = new Object();
+    private Object descansando = new Object();
 
-    
+    public void comer(String nombreHamster) throws InterruptedException{
+        synchronized (comer){
+            System.out.println("Hamster "+ nombreHamster  +" comiendo.....");
+            System.out.println("Hamster "+ nombreHamster  +" termino de comer.");
+        }
+        
+    }
+    public  void corriendo(String nombreHamste) throws InterruptedException{
+        synchronized(corriendo){
+            System.out.println("Hamster "+ nombreHamste  +" corriendo.....");
+            System.out.println("Hamster "+ nombreHamste  +" termino de correr");
+        }
+        
 
-    public boolean getComerEnUso() {
-        return comerEnUso;
     }
+    public  void descansando(String nombreHamste) throws InterruptedException{
 
-    public void setComerEnUso(boolean comerEnUso) {
-        this.comerEnUso = comerEnUso;
-    }
+        synchronized (descansando){
+            System.out.println("Hamster "+ nombreHamste  +" descansando.....");
+            System.out.println("Hamster "+ nombreHamste  +" termino de descansar.");
+        }
 
-    public boolean getCorriendoEnUso() {
-        return corriendoEnUso;
-    }
-
-    public void setCorriendoEnUso(boolean corriendoEnUso) {
-        this.corriendoEnUso = corriendoEnUso;
-    }
-
-    public boolean getDescansandoEnUso() {
-        return descansandoEnUso;
-    }
-
-    public void setDescansandoEnUso(boolean descansandoEnUso) {
-        this.descansandoEnUso = descansandoEnUso;
-    }
-    
-    public  void comer() throws InterruptedException{
-        comerEnUso=true;
-        System.out.println("Hamster "+ Thread.currentThread().getName()  +" comiendo.....");
-        Thread.sleep(2000);
-        System.out.println("Hamster"+ Thread.currentThread().getName()  +" termino de comer.");
-        comerEnUso=false;
-    }
-    public  void corriendo() throws InterruptedException{
-        corriendoEnUso=true;
-        System.out.println("Hamster "+ Thread.currentThread().getName()  +" corriendo.....");
-        Thread.sleep(2000);
-        System.out.println("Hamster"+ Thread.currentThread().getName()  +" termino de comer.");
-        corriendoEnUso=false;
-    }
-    public  void descansando() throws InterruptedException{
-        descansandoEnUso=true;
-        System.out.println("Hamster "+ Thread.currentThread().getName()  +" comiendo.....");
-        Thread.sleep(2000);
-        System.out.println("Hamster"+ Thread.currentThread().getName()  +" termino de descansar.");
-        descansandoEnUso=false;
     }
 }
 

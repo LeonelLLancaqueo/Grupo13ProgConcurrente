@@ -1,4 +1,4 @@
-public class SumaMatriz {
+public class SumarMatriz {
     private int sum;
     public synchronized int sumMatriz(int[] nums){
         sum=0;

@@ -1,6 +1,6 @@
 public class MiHilo implements Runnable {
     Thread hilo;
-    static SumaMatriz sumaM= new SumaMatriz();
+    static SumarMatriz sumaM= new SumarMatriz();
     int arr[];
     int resp;
     //Construye un nuevo hilo.

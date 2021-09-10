@@ -1,20 +1,15 @@
 public class Hamster extends Thread {
     Actividades hilo;
     String nombre;
-    //boolean comio, corrio, descanso;
     public Hamster(Actividades hilo, String name) {
         this.hilo = hilo;
         this.nombre= name;
     }
     public void run(){
         try {
-            /*while(!comio || !corrio || !descanso)
-            if(){
-
-            }*/
-            this.hilo.comer();
-            this.hilo.corriendo();
-            this.hilo.descansando();
+            this.hilo.comer(this.nombre);
+            this.hilo.corriendo(this.nombre);
+            this.hilo.descansando(this.nombre);
             
         } catch (InterruptedException e) {
             System.out.println("error");

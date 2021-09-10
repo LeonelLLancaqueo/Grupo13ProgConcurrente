@@ -7,22 +7,21 @@ public class Orco implements Runnable {
     public Orco(Guerrero n){
         this.g= n;
     }
-    public synchronized void atacar()throws InterruptedException{
+    //
+    public void atacar()throws InterruptedException{
         if(g.getVida() >= 0){
             System.out.println("Realizando ataque: ");           
             Thread.sleep(1500);                
             g.restarVida(this.ataque);
             System.out.println("Ataque realizado");  
-            System.out.println("la vida de guerrero es: " + g.getVida());
         }else{
             System.out.println("el guerrero esta muerto "+ Thread.currentThread().getName());
-            System.out.println("la vida de guerrero es: " + g.getVida());
             Thread.sleep(1000);    
         }
     }
 
     public void run() {
-        for(int i=0; i <= 15; i++){
+        for(int i=0; i <= 3; i++){
             try {
                 this.atacar();
             } catch (InterruptedException e) {
