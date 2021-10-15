@@ -1,3 +1,5 @@
+package TiendaMascotas;
+
 import java.util.concurrent.Semaphore;
 
 class Actividades   {
@@ -22,21 +24,16 @@ class Actividades   {
         boolean comio= false;
         if(comerS.tryAcquire()){
             System.out.println("Hamster "+ nombreHamster  +" comiendo.....");
-            Thread.sleep(4000);
             System.out.println("Hamster "+ nombreHamster  +" termino de comer.");
             comio= true;
             comerS.release();
         }
-        //comerS.acquire();
-        //synchronized(comer){
-        //}
+
         return comio;
     }
 
     public  boolean  corriendo(String nombreHamste) throws InterruptedException{
         boolean corrio= false;
-        //actividades.acquire();    
-        //synchronized(corriendo){
             if(corriendoS.tryAcquire()){
                 System.out.println("Hamster "+ nombreHamste  +" corriendo.....");
                 Thread.sleep(2000);
@@ -51,8 +48,6 @@ class Actividades   {
 
     public  boolean descansando(String nombreHamste) throws InterruptedException{
         boolean descansando= false;
-        //actividades.acquire();
-        //synchronized(descansando){
             if(descansandoS.tryAcquire()){
             System.out.println("Hamster "+ nombreHamste  +" descansando.....");
             Thread.sleep(3000);   
@@ -60,8 +55,7 @@ class Actividades   {
             descansando= true;
             descansandoS.release();
         }
-        //}
-        //actividades.release();
+
         return descansando;
     }
 }
