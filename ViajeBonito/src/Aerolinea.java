@@ -50,6 +50,7 @@ public class Aerolinea {
         
         mutexTurno.release();
         
+
     }
 
     public void despertarPasajero() throws InterruptedException{

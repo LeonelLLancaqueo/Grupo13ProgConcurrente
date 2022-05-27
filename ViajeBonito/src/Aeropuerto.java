@@ -7,9 +7,10 @@ import java.util.concurrent.CyclicBarrier;
 public class Aeropuerto {
     private Aerolinea colAerolinea[];
     private GuardiaSeguridad colGuardia[];
+    private Terminal colTerminal [];
     private int hora, espEntrar; 
     private static final int horaCierre= 20;
-    private Semaphore mutexHora, entrar, mutexEspEntrar, guardia;
+    private Semaphore mutexHora, entrar, mutexEspEntrar, guardia, lugaresTren;
     private static final String nombreAerolinea[]= new String[]{"Aerolineas Argentinas", "AirBang", "Fly", "AliExpress", "Despegar"};
     private Random r;
     private CyclicBarrier tren;
@@ -24,6 +25,8 @@ public class Aeropuerto {
         entrar= new Semaphore(0);
         mutexEspEntrar= new Semaphore(1);
         espEntrar= 0;
+        //tren
+        lugaresTren= new Semaphore(10);
 
         //mutex
         mutexHora= new Semaphore(1);
@@ -70,6 +73,15 @@ public class Aeropuerto {
         mutexEspEntrar.release();
 
     }
+    // PARTE DEL TREN
+
+    public void tomarTren() throws  BrokenBarrierException, InterruptedException {
+        lugaresTren.acquire();
+        tren.await();
+    }
+
+    public void bajarTren(){
+    }
 
     // METODOS PROPIOS DE AEROPUERTO
     private void inicializarColAerolineaYGuardia(int n){
@@ -82,10 +94,12 @@ public class Aeropuerto {
         }
     }
 
-    public void tomarTren() throws  BrokenBarrierException, InterruptedException {
-        tren.await();
-    }
-
-    public void bajarTren(){}
+    private void inicializarTerminal(){
+        colTerminal= new Terminal[3];
+        for(int i=0; i<3; i++){
+            colTerminal[i]= new Terminal();
+        }
+    } 
+    
 
 }
