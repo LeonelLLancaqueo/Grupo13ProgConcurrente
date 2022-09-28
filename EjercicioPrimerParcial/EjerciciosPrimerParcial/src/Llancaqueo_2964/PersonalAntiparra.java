@@ -10,7 +10,7 @@ public class PersonalAntiparra extends Thread{
         
         try {
             while(true){// el personal itera infinitamente esperando a nuevos visitantes
-                System.out.println("El personal de antiparra puedo entregar la antiparra " + parqueAcuatico.entregarAntipara());
+                parqueAcuatico.entregarAntipara();
             }
         }
         catch (InterruptedException err) {

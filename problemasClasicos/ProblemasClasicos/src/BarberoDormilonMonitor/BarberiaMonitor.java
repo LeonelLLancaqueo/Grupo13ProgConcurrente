@@ -1,24 +1,25 @@
 package BarberoDormilonMonitor;
 
 public class BarberiaMonitor {
-    //private int sillasDisponibles;
     private boolean sillaOcupada, terminoCortar, salio;
     private int sillasDisponibles, cantSillas;
     public BarberiaMonitor(int sillasDisponibles){
         this.sillasDisponibles= sillasDisponibles;
         this.cantSillas= sillasDisponibles;
+
     }
 
     public synchronized void esperarCliente() throws InterruptedException {
         while(!sillaOcupada){ //si no hay nadie en la silla
             this.wait(); //bloqueamos al barbero
         }
+
     }
     //hacer un notifyall y que lo agarre el barbero nomas
     
     public synchronized boolean solicitarSillon() {
         boolean exito= false; 
-        if(!sillaOcupada && sillasDisponibles == cantSillas){
+        if(!sillaOcupada && sillasDisponibles == cantSillas){ //preguntar si es la mejor soluciion pq no es escalable a mas sillones
             sillaOcupada= true;
             exito=true;
         }    
@@ -52,7 +53,7 @@ public class BarberiaMonitor {
         while(!terminoCortar){ //mientras no tenga exito la accion realiza un wait()
             this.wait();
         }
-        this.sillaOcupada= false;
+        this.sillaOcupada= true;
         this.salio= true;
         this.terminoCortar= false;
         notifyAll();
