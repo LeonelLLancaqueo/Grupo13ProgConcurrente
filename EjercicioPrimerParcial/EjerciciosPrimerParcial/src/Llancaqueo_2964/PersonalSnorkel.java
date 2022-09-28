@@ -10,7 +10,7 @@ public class PersonalSnorkel extends Thread{
         
         try {
             while(true){ // el personal itera infinitamente esperando a nuevos visitantes
-                System.out.println("El personal de snorkel puedo entregar la antiparra " + parqueAcuatico.entregarSnorkel());
+                parqueAcuatico.entregarSnorkel();
             }
         }
         catch (InterruptedException err) {

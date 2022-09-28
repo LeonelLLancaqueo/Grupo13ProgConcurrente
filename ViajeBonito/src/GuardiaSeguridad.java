@@ -1,10 +1,10 @@
 public class GuardiaSeguridad extends Thread {
     private static int idGuardia=0;
-    private Aerolinea aerolinea;
+    private PuestoAerolinea aerolinea;
     private int id; 
 
 
-    public GuardiaSeguridad(Aerolinea aerolinea){
+    public GuardiaSeguridad(PuestoAerolinea aerolinea){
         this.aerolinea= aerolinea;
         this.id= inicializarId();
     }

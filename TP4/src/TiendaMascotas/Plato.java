@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Plato {
-    private ReentrantLock plato;
+    private Lock plato;
 
     public Plato(){
         this.plato = new ReentrantLock();

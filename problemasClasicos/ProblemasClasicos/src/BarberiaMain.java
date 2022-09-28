@@ -1,7 +1,7 @@
 public class BarberiaMain {
     
     public static void main(String[] args){
-        Barberia barberia= new Barberia();
+        Barberia barberia= new Barberia(4);
         Cliente arr[]= new Cliente[10];
         int cantClientes= 10;
         for(int i=0; i < cantClientes; i++){

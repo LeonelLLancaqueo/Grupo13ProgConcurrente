@@ -4,11 +4,10 @@ public class Barberia {
     private Semaphore sillon, barbero, cliente;
     private int lugarDisponible;
     private ReentrantLock lock;
+    private int ultimoLugarLibre;
 
-    //private int ultimoLugarLibre;
-
-    public Barberia(){
-        this.lugarDisponible= 0;
+    public Barberia(int lugarDisponible){
+        this.lugarDisponible= lugarDisponible;
         this.sillon = new Semaphore(1, true);
         this.barbero = new Semaphore(0, true);
         this.cliente = new Semaphore(0, true);
@@ -26,10 +25,10 @@ public class Barberia {
     public boolean solicitarSillon() throws InterruptedException{
         return sillon.tryAcquire();
     }
-    public boolean sentarseEnSillaEspera() throws InterruptedException{
+    public synchronized boolean sentarseEnSillaEspera() throws InterruptedException{
         boolean exito= false;
         try {
-            lock.lock();
+            
             if(this.lugarDisponible < 4){
                 lugarDisponible++;
                 exito= true;

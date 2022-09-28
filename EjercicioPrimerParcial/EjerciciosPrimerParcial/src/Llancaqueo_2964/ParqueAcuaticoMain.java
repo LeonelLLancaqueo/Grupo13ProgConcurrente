@@ -2,10 +2,10 @@ package Llancaqueo_2964;
 
 public class ParqueAcuaticoMain {
     public static void main(String[] args){
-        ParqueAcuatico parqueAcuatico = new ParqueAcuatico(3,3);
+        ParqueAcuatico parqueAcuatico = new ParqueAcuatico(5,4);
         PersonalSnorkel personalSnorkel = new PersonalSnorkel(parqueAcuatico);
         PersonalAntiparra personalAntiparra = new PersonalAntiparra(parqueAcuatico);
-        Visitante []colVisitante= new Visitante[5];
+        Visitante []colVisitante= new Visitante[15];
         
         int cantVisitante= colVisitante.length;
         
